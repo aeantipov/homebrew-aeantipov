@@ -12,7 +12,7 @@ class Fkmc < Formula
   depends_on "cmake" => [:build]
   depends_on :mpi => [:cc, :cxx, :recommended]
   depends_on "aeantipov/aeantipov/gftools"
-  depends_on "homebrew/science/alpscore" 
+  depends_on "homebrew/science/alpscore"
   depends_on "arpack"
 
   def install
@@ -33,6 +33,6 @@ class Fkmc < Formula
   end
 
   test do
-    system "fk_mc_cubic1d"
+    system "#{bin}/fk_mc_cubic1d"
   end
 end

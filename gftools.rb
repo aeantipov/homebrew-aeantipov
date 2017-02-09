@@ -2,7 +2,7 @@ class Gftools < Formula
   desc "Greens Functions DSL"
   homepage "http://github.com/aeantipov/gftools"
   url "https://github.com/aeantipov/gftools/archive/1.1.2.tar.gz"
-  sha256 "b2c41df1888fe3cdebe0279ac150bf51f870553fb54580c8639417dadb13fe3d"
+  sha256 "6531eec8b240f157e080293b48eca09e87a2cb1314d57c3139d62a6db5d576ca"
   revision 1
   head "https://github.com/aeantipov/gftools.git", :using => :git
 
@@ -29,14 +29,13 @@ class Gftools < Formula
   end
 
   test do
-    ENV.cxx11
+    #ENV.cxx11
     system "curl","-o","test.cpp","https://raw.githubusercontent.com/aeantipov/gftools/master/example/basic_ops.cpp"
     d1 = %x(brew --prefix eigen)
-    args_compile = ["-I"+d1.chomp+"/include/eigen3",
-      "test.cpp",
+    args_compile = ["-std=c++11", "-stdlib=libc++", "-I"+d1.chomp+"/include/eigen3",
+      "test.cpp", "-o", "test"
     ]
-    args_compile << "-o" << "test"
     system ENV.cxx, *args_compile
-    #system "./test"
+    system "./test"
   end
 end

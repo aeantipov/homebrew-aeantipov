@@ -14,6 +14,8 @@ class Fkmc < Formula
   depends_on "aeantipov/aeantipov/gftools"
   depends_on "homebrew/science/alpscore"
   depends_on "arpack"
+  depends_on "boost" => ["c++11", "with-mpi"]
+  depends_on "fftw"
 
   def install
     ENV.cxx11
